@@ -1,0 +1,43 @@
+<p id="notice"></p>
+<br>
+    <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました。
+        <% @post.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+
+
+<div class="container">
+    <div class="row element">
+        <div class="col-xs-3">
+
+<h1>top</h1>
+
+<% @posts.each do |post| %>
+	<%= link_to user_path(post.user) do %>
+	<%= attachement_image_tag post.user, :profile_image, format: 'jpeg', fallback: "サラリーマン.jpeg", size:"50x50" %>
+	<% end %>
+	<%= post.user.name %>
+	<%= link_to post.title, post_path(post), class: "post_#{post.id}" %>
+	<%= post.body %>
+	<%= attachement_image_tag post_image, :image %>
+
+	<% if post.favorited_by?(current_user) %>
+    	<%= link_to post_favorites_path(post), method: :delete do %>
+    	<i class="fas fa-heart"></i>
+      	<% end %>
+    <% else %>
+        <%= link_to post_favorites_path(post), method: :post do %>
+        <i class="far fa-heart"></i>
+       	<% end %>
+    <% end %>
+    <%= post.favorites.count %>
+
+	<%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
+<% end %>
+
+
+</div>
+</div>
+</div>

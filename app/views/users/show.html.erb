@@ -1,0 +1,55 @@
+<div class="container">
+<div class="row">
+
+<div class="mx-auto">
+<h1>マイページ</h1>
+    <h4>登録情報</h4>
+    <div class="border" style="padding: 10px;">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+            	</tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "サラリーマン.jpeg",size: "40x40" %></td>
+                </tr>
+            	<tr>
+            		<td>ユーザー名</td>
+                    <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                    <td>メールアドレス</td>
+                    <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                    <td>部署名</td>
+                    <td><%= @user.section_name %></td>
+                </tr>
+                <tr>
+                    <td>役職名</td>
+                    <td><%= @user.position_name %></td>
+                </tr>
+                <tr>
+                    <td>交際ステータス</td>
+                    <td></td>
+            	</tr>
+                <tr>
+                    <td>自己紹介文</td>
+                    <td><%= @user.introduction %></td>
+                </tr>
+            </tbody>
+        </table>
+        <%= link_to "編集する", edit_user_path, class: "btn btn-success ml2" %>
+        <%= link_to "パスワードを変更する", edit_user_registration_path, class: "btn btn-success ml2" %>
+    </span>
+</div>
+</div>
+</div>
+

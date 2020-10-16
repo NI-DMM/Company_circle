@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CompanyCircle</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>Company circle</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	</head>
 
-  <body>
-    <%= yield %>
-  </body>
+	<body>
+		<header>
+			<nav class="nav navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="#">Company circle</a>
+				<botton class="navbar-toggler" type="botton" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</botton>
+
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<% if user_signed_in? %>
+  							<li class="nav-item active"><%= link_to "マイページ", user_path(@user) %></li>
+  							<li class="nav-item"><%= link_to "新規投稿", new_post_path %></li>
+							<li class="nav-item"><%= link_to "ユーザー一覧", users_path %></li>
+  							<li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+						<% else %>
+  							<li class="nav-item active"><%= link_to "Home", root_path %></li>
+  							<li class="nav-item"><%= link_to "About", home_about_path %></li>
+  							<li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
+  							<li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
+						<% end %>
+					</ul>
+
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container">
+			<p id="notice"><%= notice %></p>
+
+		</div>
+
+	<%= yield %>
+
+		<footer>
+			<div class="container-fluid mt-4">
+				<div class="row justify-content-center py-2">
+					<div class="col-xs-3 col-xs-offset-9">
+						<p>Company circle</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+	</body>
 </html>

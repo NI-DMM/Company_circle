@@ -1,0 +1,71 @@
+<%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+	<h2><%= @user.errors.count %>errors prohibited this book from being saved:</h2>
+	<ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<div class="container">
+<div class="row">
+
+<div class="mx-auto">
+<h1>マイページ編集画面</h1>
+    <h4>登録情報</h4>
+    <div class="border" style="padding: 10px;">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+            	</tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "サラリーマン.jpeg",size: "40x40" %></td>
+                </tr>
+            	<tr>
+            		<td><%= f.label :ユーザー名 %></td>
+                    <td><%= f.text_field :name %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :メールアドレス　%></td>
+                    <td><%= f.text_field :email %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :部署名 %></td>
+                    <td><%= f.text_field :section_name %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :役職名 %></td>
+                    <td><%= f.text_field :position_name %></td>
+                </tr>
+                <tr>
+                    <td>交際ステータス</td>
+                    <td></td>
+            	</tr>
+                <tr>
+                    <td><%= f.label :自己紹介文 %></td>
+                    <td><%= f.text_area :introduction %></td>
+                </tr>
+            </tbody>
+        </table>
+        <%= f.submit "保存", class: "btn btn-success ml2" %>
+        <%= link_to "退会", user_path(@user), method: :delete, data: {confirm: "本当に退会しますか？　退会する場合は、「退会する」をクリックしてください。"},  class: "btn-sm btn-danger destroy_user_#{@user.id}" %>
+    </span>
+</div>
+</div>
+</div>
+
+<% end %>
+
+
+
+
