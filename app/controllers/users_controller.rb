@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.all
+		@users = User.page(params[:page]).per(10)
 		@post = Post.new
 		@user = current_user
 	end
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :introduction, :profile_image_id)
+		params.require(:user).permit(:name, :section_name, :position_name, :email, :introduction, :profile_image, :relationship_status)
 	end
 
 	def ensure_correct_user

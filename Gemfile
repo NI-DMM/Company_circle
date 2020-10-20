@@ -72,3 +72,8 @@ gem 'enum_help'
 gem 'pry-rails'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+

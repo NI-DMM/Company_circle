@@ -29,6 +29,16 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  def self.search(word)
+    if word == ""
+      @users = User.all
+    else
+      @users = User.where(["name LIKE?", "%#{word}%"])
+    end
+  end
+
+  enum relationship_status: {married:0, single:1, wanted:2, secret:3}
+
   validates :name, presence: true, length: {maximum: 20, minimum: 2}
   validates :introduction, length: {maximum: 50}
 end
