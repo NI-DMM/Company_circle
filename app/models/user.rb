@@ -37,7 +37,7 @@ class User < ApplicationRecord
     end
   end
 
-  enum relationship_status: {married:0, single:1, wanted:2, secret:3}
+  enum relationship_status: {既婚:0, 独身:1, "独身（募集中）":2, 秘密:3}
 
   validates :name, presence: true, length: {maximum: 20, minimum: 2}
   validates :introduction, length: {maximum: 50}

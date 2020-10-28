@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/about'
   get '/searches' => 'searches#search'
+  get 'inquiry' => 'inquiry#index'
+  post 'inquiry/confirm' => 'inquiry#confirm'
+  post 'inquiry/thanks' => 'inquiry#thanks'
 
   resources :users
 
