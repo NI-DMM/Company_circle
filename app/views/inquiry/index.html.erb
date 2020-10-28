@@ -1,20 +1,22 @@
 <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+
 <% if @inquiry.errors.any? %>
-<div class="container" style="margin-top: 50px">
-    <div class="alert alert-danger" role="alert">
-        <strong>入力内容にエラーがあります</strong>
-        <ul>
-            <% @inquiry.errors.each do |attr, msg| %>
+    <div class="container" style="margin-top: 50px">
+        <div class="alert alert-danger" role="alert">
+            <strong>入力内容にエラーがあります</strong>
+            <ul>
+                <% @inquiry.errors.each do |attr, msg| %>
             <li>
                 <%= msg %>
             </li>
-            <% end %>
-        </ul>
+                <% end %>
+            </ul>
+        </div>
     </div>
-</div>
 <% else %>
-<div class="container" style="margin-top: 150px"></div>
+    <div class="container" style="margin-top: 150px"></div>
 <% end %>
+
 <div class="card mx-auto" style="width: 30rem;">
     <article class="card-body">
         <h4 class="card-title text-center mb-4 mt-1">お問い合わせ</h4>
@@ -49,3 +51,5 @@
         </div>
         <%= f.submit '確認', class: 'btn btn-primary' %>
         <% end %>
+    </article>
+</div>

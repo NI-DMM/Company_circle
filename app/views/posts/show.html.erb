@@ -54,11 +54,11 @@
                 </tr>
                 <% end %>
                 </table>
-                        <%= form_for [@post, @post_comment] do |f| %>
-                            <%= f.text_area :comment, class: "form-control" %>
-                            <br>
-                            <%= f.submit "投稿する", class: "btn btn-primary" %>
-                        <% end %>
+                <%= form_for [@post, @post_comment] do |f| %>
+                    <%= f.text_area :comment, class: "form-control" %>
+                    <br>
+                    <%= f.submit "投稿する", class: "btn btn-primary" %>
+                <% end %>
         </article>
     </div>
 </div>

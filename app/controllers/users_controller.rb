@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-	# before_action :authenticate_user!
-	# before_action :ensure_correct_user, only: [:update]
+	before_action :authenticate_user!
 
 	def show
 		@user = User.find(params[:id])
@@ -52,13 +51,6 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:name, :section_name, :position_name, :email, :introduction, :profile_image, :relationship_status)
-	end
-
-	def ensure_correct_user
-		@user = User.find_by(id: params[:id])
-		unless @user.id == current_user.image_id
-		redirect_to user_path(@user)
-		end
 	end
 
 end

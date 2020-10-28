@@ -11,7 +11,7 @@
                     <th></th>
                 </tr>
             </thead>
-             <% @user.followers.each do |user| %>
+            <% @user.followers.each do |user| %>
             <tbody>
                 <td>
                     <%= attachment_image_tag user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size: "40x40", class: "rounded-circle" %>
