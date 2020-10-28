@@ -1,66 +1,83 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Company circle</title>
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
 
-		<script src="https://kit.fontawesome.com/d2b5f6577c.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	</head>
+<head>
+    <title>Company circle</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/d2b5f6577c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
 
-	<body>
-		<header>
-			<nav class="nav navbar-expand-lg navbar-light bg-light fixed-top">
-				<a class="navbar-brand" href="http://localhost:3000/posts", style="font-family: 'Playfair Display', serif;">Company circle</a>
-				<botton class="navbar-toggler" type="botton" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</botton>
+<body>
+    <header>
+        <nav class="nav navbar-expand-lg navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="http://localhost:3000/posts" , style="font-family: 'Playfair Display', serif;">Company circle</a>
+            <botton class="navbar-toggler" type="botton" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </botton>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <% if user_signed_in? %>
+                    <li class="nav-item active m-2">
+                        <%= link_to "マイページ", user_path(current_user), class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "新規投稿", new_post_path, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "ユーザー一覧", users_path, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "お問い合わせ", inquiry_path, class: "btn btn-secondary" %>
+                    </li>
+                    <% else %>
+                    <li class="nav-item active m-2">
+                        <%= link_to "Home", root_path, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "About", home_about_path, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+                    </li>
+                    <li class="nav-item m-2">
+                        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
+                    </li>
+                    <% end %>
+                </ul>
+                <% if user_signed_in? %>
+                <div class="form-inline my-2 my-lg-0">
+                    <%= form_tag(searches_path, method: :get) do %>
+                    <%= text_field_tag(:word, "", class: "form-control", placeholder: "search") %>
+                    <%= select_tag "range", options_for_select([["ユーザー検索","1"],["投稿検索","2"]]) %>
+                    <%= submit_tag "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
+                    <% end %>
+                    <% end %>
+                </div>
+        </nav>
+    </header>
+    <% if notice.present? %>
+    <div class="container">
+        <p id="notice">
+            <%= notice %>
+        </p>
+    </div>
+    <% end %>
+    <main>
+        <%= yield %>
+    </main>
+    <footer class="container mw-100 bg-secondary fixed-bottom " style="height: 50px;">
+        <div class="row justify-content-center py-2">
+            <p class="">Company circle</p>
+        </div>
+    </footer>
+</body>
 
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<% if user_signed_in? %>
-  							<li class="nav-item active m-2"><%= link_to "マイページ", user_path(current_user), class: "btn btn-secondary" %></li>
-  							<li class="nav-item m-2"><%= link_to "新規投稿", new_post_path, class: "btn btn-secondary" %></li>
-							<li class="nav-item m-2"><%= link_to "ユーザー一覧", users_path, class: "btn btn-secondary" %></li>
-  							<li class="nav-item m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %></li>
-						<% else %>
-  							<li class="nav-item active m-2"><%= link_to "Home", root_path, class: "btn btn-secondary" %></li>
-  							<li class="nav-item m-2"><%= link_to "About", home_about_path, class: "btn btn-secondary" %></li>
-  							<li class="nav-item m-2"><%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %></li>
-  							<li class="nav-item m-2"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %></li>
-						<% end %>
-					</ul>
-
-					<% if user_signed_in? %>
-					<div class="form-inline my-2 my-lg-0">
-					<%= form_tag(searches_path, method: :get) do %>
-					<%= text_field_tag(:word, "", class: "form-control", placeholder: "search") %>
-					<%= select_tag "range", options_for_select([["ユーザー検索","1"],["投稿検索","2"]]) %>
-					<%= submit_tag "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
-					<% end %>
-					<% end %>
-				</div>
-			</nav>
-		</header>
-
-		<% if notice.present? %>
-		<div class="container">
-			<p id="notice"><%= notice %></p>
-
-		</div>
-		<% end %>
-   <main>
-	<%= yield %>
-</main>
-        		<footer class="container mw-100 bg-success fixed-bottom " style="height: 50px;">
-				<div class="row justify-content-center py-2">
-						<p class="">Company circle</p>
-			</div>
-		</footer>
-		
-	</body>
 </html>

@@ -17,8 +17,8 @@ class Post < ApplicationRecord
 		end
 	end
 
-	validates :title, presence: true
-	validates :body, presence: true, length: {maximum: 50}
+	validates :title, :presence => {:message => 'タイトルを入力してください'}
+	validates :body, :presence => {:message => '投稿内容を入力してください'}, length: {maximum: 50}
 	
 	default_scope -> { order(created_at: :desc) }
 end

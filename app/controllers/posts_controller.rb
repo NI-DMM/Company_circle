@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 		@posts = Post.page(params[:page]).per(10)
 		@post = Post.new
 		@user = current_user
+		@users = User.all
 	end
 
 	def new
@@ -22,11 +23,11 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
 		if @post.save
-			redirect_to posts_path(@post.id), notice: "投稿しました。"
+			redirect_to posts_path, notice: "投稿しました。"
 		else
 		   @posts = Post.all
 		   @user = current_user
-		   render "index"
+		   render "new"
 		end
 	end
 

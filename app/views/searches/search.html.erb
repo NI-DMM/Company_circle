@@ -1,85 +1,93 @@
 <% if @range == '1' %>
-	<div class = "container">
-
-		<div class = "row my-5">
-			<div class = "offset-md-1">
-				<h3><span class = "px-4 bg-light">ユーザー一覧</span></h3>
-			</div>
-		</div>
-
-		<div class = "row">
-			<div class = "col-md-11">
-				<table class = "table table-hover">
-					<thead class = "thead-light">
-						<tr>
-							<th>ユーザー名</th>
-							<th>部署名</th>
-							<th>役職名</th>
-							<th>交際ステータス</th>
-							<th>自己紹介</th>
-						</tr>
-					</thead>
-					<% @users.each do |user| %>
-						<tbody>
-							<tr>
-								<td><%= link_to user_path(user.id) do %>
-									<%= user.name %>
-									<% end %></td>
-								<td><%= user.section_name %></td>
-								<td><%= user.position_name %></td>
-								<td><%= user.relationship_status %></td>
-								<td><%= user.introduction %></td>
-							</tr>
-						</tbody>
-					<% end %>
-				</table>
-			</div>
-		</div>
-
-		<div class = "row">
-			<div class = "offset-md-4">
-				<%= paginate @users %>
-			</div>
-		</div>
-
-	</div>
+<div class="container">
+    <div class="row my-5">
+        <div class="offset-md-1">
+            <h3><span class="px-4 bg-light">ユーザー一覧</span></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ユーザー名</th>
+                        <th>部署名</th>
+                        <th>役職名</th>
+                        <th>交際ステータス</th>
+                        <th>自己紹介</th>
+                    </tr>
+                </thead>
+                <% @users.each do |user| %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= link_to user_path(user.id) do %>
+                            <%= user.name %>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= user.section_name %>
+                        </td>
+                        <td>
+                            <%= user.position_name %>
+                        </td>
+                        <td>
+                            <%= user.relationship_status %>
+                        </td>
+                        <td>
+                            <%= user.introduction %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-4">
+            <%= paginate @users %>
+        </div>
+    </div>
+</div>
 <% elsif @range == '2' %>
-	<div class = "container">
-
-		<div class = "row my-5">
-			<div class = "offset-md-1">
-				<h3><span class = "px-4 bg-light">投稿一覧</span></h3>
-			</div>
-		</div>
-
-		<div class = "row">
-			<div class = "col-md-11">
-				<table class = "table table-hover">
-					<thead class = "thead-light">
-						<tr>
-							<th>タイトル</th>
-							<th>投稿</th>
-							<th></th>
-						</tr>
-					</thead>
-					<% @posts.each do |post| %>
-						<tbody>
-							<tr>
-								<td><%= post.title %></td>
-								<td><%= post.body %></td>
-								<td><%= post.image %></td>
-							</tr>
-						</tbody>
-					<% end %>
-				</table>
-			</div>
-		</div>
-
-		<div class = "row">
-			<div class = "offset-md-4">
-				<%= paginate @posts %>
-			</div>
-		</div>
-
-	</div>
+<div class="container">
+    <div class="row my-5">
+        <div class="offset-md-1">
+            <h3><span class="px-4 bg-light">投稿一覧</span></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>タイトル</th>
+                        <th>投稿</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <% @posts.each do |post| %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= post.title %>
+                        </td>
+                        <td>
+                            <%= post.body %>
+                        </td>
+                        <td>
+                            <%= post.image %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-4">
+            <%= paginate @posts %>
+        </div>
+    </div>
+</div>
 <% end %>

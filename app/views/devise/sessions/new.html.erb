@@ -1,47 +1,40 @@
-<div class="container">
-
-  <div class="card mx-auto" style="width: 30rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-      <article class="card-body">
-        <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
-        <hr>
-        <p class="text-success text-center"></p>
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス：example@email.com" %>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+<div class="container" style="margin-top: 150px">
+    <div class="card mx-auto" style="width: 30rem;">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+            <hr>
+            <p class="text-success text-center"></p>
+            <div class="form-group">
+                <%= f.label :email, "メールアドレス：example@email.com" %>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+                </div>
             </div>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :"パスワード：6文字以上" %>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            <div class="form-group">
+                <%= f.label :"パスワード：6文字以上" %>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "******" %>
+                </div>
             </div>
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "******" %>
-          </div>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
+            <% if devise_mapping.rememberable? %>
+            <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+            </div>
+            <% end %>
+            <div class="form-group">
+                　　　　　
+                <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+            </div>
+            <%= render "devise/shared/links" %>
+        </article>
         <% end %>
-
-        <div class="form-group">
-  　　　　　<%= f.submit "Log in", class: "btn btn-primary btn-block" %>
-        </div>
-
-        <%= render "devise/shared/links" %>
-
-      </article>
-    <% end %>
-  </div>
+    </div>
 </div>
