@@ -1,24 +1,33 @@
-# README
+Company_circle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+サイト概要
+同じ会社同士で知り合うことのできるマッチングサイトです。
 
-Things you may want to cover:
+サイトテーマ
+・この会社で働く全ての方に、「この会社で働いてよかった！」と思って頂けるよう、仕事もプライベートも充実させるための手助けをします！
+・業務に関係のあることからプライベートまで自由に交流して頂けます。
 
-* Ruby version
+テーマを選んだ理由
+・以前働いていた職場は中途入社だったため、社内で知り合いを増やすことがなかなかできませんでした。
+　他部署が何をしているのかも知らず、同じ部署以外との繋がりもなかったため、自分から積極的に参加しなければ人脈を増やすことができませんでした。
+　そこで、社内で自由に気軽に交流できるような場所があるといいと思い、このテーマを選択しました。
 
-* System dependencies
+ターゲットユーザ
+社員数が多い企業や事業所が分かれている企業の社員。
 
-* Configuration
+主な利用シーン
+・社内の人脈を増やす
+・社内恋愛したい
+・中途入社のため知り合いを増やしたい
+・社内の人と情報交換を行う
 
-* Database creation
+設計書
+機能一覧
+https://docs.google.com/spreadsheets/d/1w0OxTQiS7g7ekGRK48uRHvMpV0dwcIcbXqlA1MK7rWc/edit#gid=1220667388
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+開発環境
+OS：Linux(CentOS)
+言語：HTML,CSS,JavaScript,Ruby,SQL
+フレームワーク：Ruby on Rails
+JSライブラリ：jQuery
+仮想環境：Vagrant,VirtualBox
