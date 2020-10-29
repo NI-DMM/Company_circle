@@ -78,7 +78,9 @@
                             <%= attachment_image_tag(post.user, :profile_image, format: 'jpeg', fallback: "サラリーマン.jpeg", size:"50x50", class: "rounded-circle") %>
                         </td>
                         <td>
+                            <%= link_to user_path(post.user.id) do %>
                             <%= post.user.name %>
+                            <% end %>
                         </td>
                         <td>
                             <%= link_to post_path(post.id) do %>
