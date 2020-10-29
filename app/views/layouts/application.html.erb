@@ -16,9 +16,9 @@
     <header>
         <nav class="nav navbar-expand-lg navbar-light bg-light fixed-top">
             <% if user_signed_in? %>
-                <a class="navbar-brand" href="http://localhost:3000/posts" , style="font-family: 'Playfair Display', serif;">Company circle</a>
+                <a class="navbar-brand" href="/posts" , style="font-family: 'Playfair Display', serif;">Company circle</a>
             <% else %>
-                <a class="navbar-brand" , style="font-family: 'Playfair Display', serif;">Company circle</a>
+                <a class="navbar-brand" href="/" , style="font-family: 'Playfair Display', serif;">Company circle</a>
             <% end %>
             <botton class="navbar-toggler" type="botton" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
