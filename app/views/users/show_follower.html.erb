@@ -14,7 +14,7 @@
             <% @user.followers.each do |user| %>
             <tbody>
                 <td>
-                    <%= attachment_image_tag user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size: "40x40", class: "rounded-circle" %>
+                    <%= attachment_image_tag user, :profile_image, format: "jpeg", fallback: "サラリーマン.jpeg", size: "40x40", class: "rounded-circle" %>
                 </td>
                 <td>
                     <%= user.name %>
