@@ -43,7 +43,7 @@
                         <% @post.post_comments.each do |post_comment| %>
                         <tr>
                             <td>
-                        <%= attachment_image_tag(post_comment.user, :profile_image, format: "jpeg", fallback: "サラリーマン.jpeg", size: "40x40") %>
+                        <%= attachment_image_tag(post_comment.user, :profile_image, format: "jpeg", fallback: "サラリーマン.jpeg", size: "50x50", class: "rounded-circle") %>
                         <%= post_comment.user.name %>
                     </td>
                     <td>
