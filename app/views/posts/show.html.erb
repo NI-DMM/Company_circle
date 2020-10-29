@@ -21,24 +21,26 @@
                         <div class="card-img-bottom">
                             <%= attachment_image_tag @post, :image %>
                         </div>
-                        <%= @post.created_at.strftime('%Y/%m/%d') %>
-                        <% if @post.favorited_by?(current_user) %>
-                            <%= link_to post_favorites_path(@post), method: :delete do %>
-                                <i class="fas fa-heart"></i>
+                        <div class="form-group">
+                            <%= @post.created_at.strftime('%Y/%m/%d') %>
+                            <% if @post.favorited_by?(current_user) %>
+                                <%= link_to post_favorites_path(@post), method: :delete do %>
+                                    <i class="fas fa-heart"></i>
+                                <% end %>
+                            <% else %>
+                                <%= link_to post_favorites_path(@post), method: :post do %>
+                                    <i class="far fa-heart"></i>
+                                <% end %>
                             <% end %>
-                        <% else %>
-                            <%= link_to post_favorites_path(@post), method: :post do %>
-                                <i class="far fa-heart"></i>
+                            <%= @post.favorites.count %>
+                            <%= @post.post_comments.count %>件コメント
+                            <% if @post.user.id == current_user.id %>
+                                <%= link_to "編集", edit_post_path(@post.id), class: "btn-sm btn-success" %>
                             <% end %>
-                        <% end %>
-                        <%= @post.favorites.count %>
-                        <%= @post.post_comments.count %>件コメント
-                        <% if @post.user.id == current_user.id %>
-                            <%= link_to "編集", edit_post_path(@post.id), class: "btn-sm btn-success" %>
-                        <% end %>
-                        <% if @post.user.id == current_user.id %>
-                            <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn-sm btn-danger" %>
-                        <% end %>
+                            <% if @post.user.id == current_user.id %>
+                                <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn-sm btn-danger" %>
+                            <% end %>
+                        </div>
                         <table class="table table-hover table-inverse">
                         <% @post.post_comments.each do |post_comment| %>
                         <tr>
