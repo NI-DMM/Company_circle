@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
+		@post.score = Language.get_data(post_params[:body])
 		if @post.save
 			tags = Vision.get_image_data(@post.image)
     		tags.each do |tag|

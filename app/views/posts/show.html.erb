@@ -26,6 +26,7 @@
                                 <span class="label"><%= tag.name %></span>
                             <% end %>
                         </div>
+                        <p class="sentiment-score">本文の感情分析スコア[<%= @post.score %>]</p>
                         <div class="form-group">
                             <%= @post.created_at.strftime('%Y/%m/%d') %>
                             <% if @post.favorited_by?(current_user) %>
